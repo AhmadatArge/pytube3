@@ -7,6 +7,7 @@ from http.client import HTTPResponse
 from typing import Iterable, Dict, Optional
 from urllib.request import Request
 from urllib.request import urlopen
+import urllib
 
 logger = logging.getLogger(__name__)
 
