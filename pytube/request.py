@@ -19,6 +19,13 @@ def _execute_request(
         base_headers.update(headers)
     if url.lower().startswith("http"):
         request = Request(url, headers=base_headers, method=method)
+        
+        proxy = urllib.request.ProxyHandler({'http': '127.0.0.1'})
+        # construct a new opener using your proxy settings
+        opener = urllib.request.build_opener(proxy)
+        # install the openen on the module-level
+        urllib.request.install_opener(opener)
+        
     else:
         raise ValueError("Invalid URL")
     return urlopen(request)  # nosec
